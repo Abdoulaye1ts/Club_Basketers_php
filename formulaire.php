@@ -109,7 +109,7 @@ if (isset($_SESSION['error']))
         <input type="text" name="prenom" id="prenom" required/>
 
         <label for="date_naissance">Date de naissance :</label>
-        <input type="date" name="date_naissance" id="date_naissance" min="1936-01-01" max="2021-01-01" required>
+        <input type="date" name="date_naissance" id="date_naissance" min="1936-01-01" max="2031-01-01" required>
 
         <label for="email">Email :</label>
         <input type="email" name="email" maxlength="255" id="email" required>

@@ -3,7 +3,9 @@
 function calculer_age($date_naissance)
 {
     $date_naissance = new DateTime($date_naissance);
-    $date_actuelle = new DateTime(); 
+    $date_actuelle = new DateTime();
+    
+    
 
     return $date_actuelle->diff($date_naissance)->y;  // diff() pour trouver l'âge simplement avec des variable de type DateTime
 }
@@ -110,9 +112,13 @@ function valider_formulaire($nom, $prenom, $date_naissance, $email)
     {
         $erreurs[] = "La date de naissance est nécessaire !";
     }
-    if ($date_naissance < 1936 || $date_naissance > 2021)
+
+    $annee = date('Y', strtotime($date_naissance));
+    $annee = (int) $annee;
+    $annee_actuelle = (int) date('Y');
+    if ($annee < 1936 || $annee > $annee_actuelle)
     {
-        $erreurs[] = "La date de naissance doit être entre 1936 et 2021 !";
+        $erreurs[] = "La date de naissance doit être entre 1936 et " . $annee_actuelle . "!";
     }
 //------------------------------------------------------------------------------------------------------
     $age = calculer_age($date_naissance);

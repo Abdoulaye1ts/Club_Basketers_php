@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Europe/Paris');
 
 // BDD infos
 define('DB_HOST', 'localhost');
