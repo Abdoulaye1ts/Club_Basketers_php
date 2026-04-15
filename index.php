@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require 'config.php';
 require 'fonctions.php';
 ?>
@@ -62,7 +63,10 @@ require 'fonctions.php';
             background: #6aa5dd;
         }
 
-
+        .session-success{
+            color: green;
+            text-align: center;
+        }
 
     </style>
 </head>
@@ -70,6 +74,13 @@ require 'fonctions.php';
 <?php
 
 echo "<h1>Bienvenu au club " . NOM_CLUB . ", fondé en " . ANNEE_FONDATION. " !</h1>";
+
+// Message de validation si l'inscription se passe bien 
+if (isset($_SESSION['success']))
+{
+    echo "<div class='session-success'>" . htmlspecialchars($_SESSION['success']) . "</div>";
+    unset($_SESSION['success']);
+}
 ?>
 
 <div class="info-div">

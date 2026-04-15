@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -77,6 +80,11 @@
 
         }
 
+        .session-error{
+            color: red;
+            text-align: center;
+        }
+
 
     </style>
 </head>
@@ -85,7 +93,14 @@
         <img src="img/icons8-basketball-48.png" class="basketball" alt="basketball image">
         <h1>Formulaire d'inscription</h1>
     </div>
-
+<?php
+// Message d'erreur si l'inscription ne se passe pas bien
+if (isset($_SESSION['error']))
+{
+    echo "<div class='session-error'>" . htmlspecialchars($_SESSION['error']) . "</div>";
+    unset($_SESSION['error']);
+}
+?>
     <form action="traitement.php" method="POST">
         <label for="nom">Nom :</label>
         <input type="text" name="nom" id="nom" required/>

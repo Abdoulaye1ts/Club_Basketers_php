@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'config.php';
 require 'fonctions.php';
 
@@ -27,12 +28,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     $estEnregistrer = enregistrer_membre_au_bdd($membre);
     if ($estEnregistrer)
     {
-        echo "Inscription reussi, bienvenu parmis nous !";
-        echo "<a href='index.php'><= Revenir à l'acceuil</a>";
+        $_SESSION['success'] = "Inscription reussi, bienvenu parmis nous !";
+        header('Location: index.php');
+        exit;
+
     }
     else
     {
-        echo "Erreur, veuillez réessayer plus tard";
+        $_SESSION['error'] = "Erreur, veuillez réessayer";
+        header('location: formulaire.php');
+        exit;
     }
 }
 
